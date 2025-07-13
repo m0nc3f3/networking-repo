@@ -17,3 +17,27 @@
 | `tcpdump src host IP`           | Filter packets from a source IP                         | `tcpdump src host 10.0.0.5` |
 | `tcpdump dst host IP`           | Filter packets to a destination IP                      | `tcpdump dst host 10.0.0.10`|
 | `tcpdump PROTOCOL`              | Filter by protocol (ip, ip6, icmp, etc.)                | `tcpdump icmp`              |
+
+
+
+### 🖥️ Display Format Options
+
+| Command / Option   | Purpose                                  |
+|--------------------|------------------------------------------|
+| `tcpdump -q`       | Quiet mode (brief output)                |
+| `tcpdump -e`       | Show Ethernet (MAC) addresses            |
+| `tcpdump -A`       | Show packets as ASCII text               |
+| `tcpdump -xx`      | Show packets in hexadecimal              |
+| `tcpdump -X`       | Show packets in hex + ASCII              |
+
+
+
+### 🧠 Useful Analysis Commands
+
+| Goal                          | Command                                                          |
+|-------------------------------|------------------------------------------------------------------|
+| Show only DNS queries         | `tcpdump -nn -r traffic.pcap port 53`                           |
+| First DNS query hostname      | `tcpdump -nn -r traffic.pcap port 53 | grep " A? " | head -n 1` |
+| Packets > 15000 bytes         | `tcpdump -nn -r traffic.pcap -s 0 -vv | awk '/length [1-9][5-9][0-9][0-9][0-9]/'` |
+| Capture HTTP traffic          | `tcpdump -i eth0 port 80`                                       |
+| Capture live DNS (UDP)        | `tcpdump -i eth0 udp port 53`                                   |
