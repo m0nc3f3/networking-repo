@@ -1,0 +1,38 @@
+# 📡 tcpdump Cheatsheet
+
+## 🎯 Common Options & Filters
+
+| **Command / Option**                     | **Description**                                                       | **Example** |
+|------------------------------------------|------------------------------------------------------------------------|-------------|
+| `tcpdump -i INTERFACE`                   | Capture packets on a specific network interface                        | `tcpdump -i eth0` |
+| `tcpdump -w FILE`                        | Write captured packets to a file (PCAP format)                         | `tcpdump -w capture.pcap` |
+| `tcpdump -r FILE`                        | Read packets from a file                                               | `tcpdump -r capture.pcap` |
+| `tcpdump -c COUNT`                       | Capture a specific number of packets                                   | `tcpdump -c 50` |
+| `tcpdump -n`                             | Don’t resolve hostnames                                                | `tcpdump -n` |
+| `tcpdump -nn`                            | Don’t resolve hostnames or port names                                  | `tcpdump -nn` |
+| `tcpdump -v`, `-vv`, `-vvv`              | Verbose output (more detail with more `v`)                             | `tcpdump -vv -i eth0` |
+| `tcpdump -s 0`                           | Capture full packet (not truncated)                                    | `tcpdump -s 0 -i eth0` |
+| `tcpdump port PORT_NUMBER`              | Filter packets on a specific port                                      | `tcpdump port 80` |
+| `tcpdump src port PORT_NUMBER`          | Filter packets from a specific source port                             | `tcpdump src port 443` |
+| `tcpdump dst port PORT_NUMBER`          | Filter packets to a specific destination port                          | `tcpdump dst port 22` |
+| `tcpdump host IP_OR_HOSTNAME`           | Filter packets to/from a host                                          | `tcpdump host 192.168.1.10` |
+| `tcpdump src host IP`                   | Filter packets from a specific source IP                               | `tcpdump src host 10.0.0.5` |
+| `tcpdump dst host IP`                   | Filter packets to a specific destination IP                            | `tcpdump dst host 10.0.0.10` |
+| `tcpdump PROTOCOL`                      | Filter by protocol (e.g., `ip`, `ip6`, `icmp`)                          | `tcpdump icmp` |
+| `tcpdump port 53`                       | Filter DNS traffic (DNS uses UDP/TCP port 53)                          | `tcpdump -nn -r file.pcap port 53` |
+
+---
+
+## 🖥️ Display Formats
+
+| **Command / Option**     | **Description**                                                  |
+|--------------------------|------------------------------------------------------------------|
+| `tcpdump -q`             | Quick and quiet: brief packet info (less detail)                |
+| `tcpdump -e`             | Include Ethernet (MAC) addresses in output                      |
+| `tcpdump -A`             | Display packets as ASCII (useful for HTTP)                      |
+| `tcpdump -xx`            | Display packets in hexadecimal format                           |
+| `tcpdump -X`             | Display packets in both hex and ASCII (hex dump)                |
+
+---
+
+
